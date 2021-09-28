@@ -11,9 +11,13 @@ public class Game : MonoBehaviour
     public Text minersText;
     public Text timeText;
     public Text levelText;
+    public GameObject floatingPoints;
+    public GameObject dwarfFloatingPoints;
+    public GameObject stone;
 
     public void toMine() {
         _GM.money += _GM.power;
+        Instantiate(floatingPoints, stone.transform.position,Quaternion.identity);
     }
 
     public void Buy(int num) {
@@ -64,6 +68,7 @@ public class Game : MonoBehaviour
         else {
             _GM.money += 1 * _GM.miner;
             _GM.timeMiner = _GM.baseTimeMiner;
+            Instantiate(dwarfFloatingPoints, stone.transform.position, Quaternion.identity);
         }
         //timeText.text = "" + _GM.time;
         timeText.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(_GM.time / 60), Mathf.FloorToInt(_GM.time % 60));

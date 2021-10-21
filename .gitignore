@@ -35,3 +35,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+clicker-game/.vscode/settings.json
+clicker-game/Logs

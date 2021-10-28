@@ -30,6 +30,11 @@ public class Game : MonoBehaviour
 
         string json = JsonUtility.ToJson(playerData);
         Debug.Log(json);
+
+        PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(json);
+        Debug.Log("power: "+loadedPlayerData.power);
+        Debug.Log("power: "+loadedPlayerData.money);
+        
     }
 
     private class PlayerData {

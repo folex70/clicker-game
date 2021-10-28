@@ -1470,7 +1470,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 01 - Jeff
+  m_Text: Empty
 --- !u!222 &503249823
 CanvasRenderer:
   m_ObjectHideFlags: 0

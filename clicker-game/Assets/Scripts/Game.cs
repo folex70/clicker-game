@@ -14,6 +14,33 @@ public class Game : MonoBehaviour
     public GameObject floatingPoints;
     public GameObject dwarfFloatingPoints;
     public GameObject stone;
+    public int currentProfile;
+
+    void Start()
+    {
+        currentProfile = PlayerPrefs.GetInt("currentProfile");
+        PlayerData playerData = new PlayerData();
+        playerData.power = 1;
+        playerData.money = 0;
+        playerData.miner = 1;
+        playerData.time = 120;
+        playerData.level = 1;
+        playerData.timeMiner = 1;
+        playerData.baseTimeMiner = 1;
+
+        string json = JsonUtility.ToJson(playerData);
+        Debug.Log(json);
+    }
+
+    private class PlayerData {
+        public int money;
+        public int level;//miner level
+        public int power;//power
+        public int miner;//another multiplier for dwarf
+        public float time;//expedition time 
+        public float timeMiner; //time for dwarf action
+        public float baseTimeMiner; //base time for dwarf action
+    }
 
     public void toMine() {
         _GM.money += _GM.power;
@@ -23,10 +50,7 @@ public class Game : MonoBehaviour
     public void Buy(int num) {
         if (num == 1 && _GM.money >= 10) {
             _GM.power += 1;
-            _GM.money -= 10;
-            
-            
-            
+            _GM.money -= 10;     
         }
         if (num == 2 && _GM.money >= 100)
         {

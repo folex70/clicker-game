@@ -8,7 +8,7 @@ public class FloatingPoints : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<TextMesh>().text = "+ $"+_GM.power;
+        GetComponent<TextMesh>().text = "+ $" + Game.playerData.power;//_GM.power;
         Destroy(gameObject, 1f);
         //transform.localPosition += new Vector3(0, 0.5f, 0);
     }

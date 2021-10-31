@@ -20,6 +20,10 @@ public class Menu : MonoBehaviour
 
     void Start(){
         //PlayerPrefs.DeleteAll();
+        Debug.Log("data 1: "+PlayerPrefs.GetString("jsonGameData1"));
+        Debug.Log("data 2: "+PlayerPrefs.GetString("jsonGameData2"));
+        Debug.Log("data 3: "+PlayerPrefs.GetString("jsonGameData3"));
+             
 
         OpenPanel01();
 
@@ -105,7 +109,7 @@ public class Menu : MonoBehaviour
     }
 
     public void LoadProfile(int num) {
-        //load profile and change to player city scene
+        //load profile and redirect to player city scene
         Debug.Log("profile loaded: " + num);
         PlayerPrefs.SetInt("currentProfile", num);
         switch (PlayerPrefs.GetInt("currentProfile")) {
@@ -129,6 +133,7 @@ public class Menu : MonoBehaviour
                 break;
             case 3:
                 selectedProfile.text = PlayerPrefs.GetString("profile03");
+                // Debug.Log("data 3: "+PlayerPrefs.GetString("jsonGameData3"));
 
                 if (PlayerPrefs.GetString("profile03") == "")
                 {

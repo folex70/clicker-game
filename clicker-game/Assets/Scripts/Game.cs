@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-
     public Text moneyText;
     public Text powerText;
     public Text minersText;
@@ -30,7 +29,6 @@ public class Game : MonoBehaviour
         playerData.baseTimeMiner = 1;
 
         string json = JsonUtility.ToJson(playerData);
-        Debug.Log(json);
 
         PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(json);
         Debug.Log("power: "+loadedPlayerData.power);
@@ -48,6 +46,7 @@ public class Game : MonoBehaviour
         public float baseTimeMiner; //base time for dwarf action
     }
 
+    
     public void toMine() {
         //playerData.money += playerData.power;
         playerData.money += playerData.power;
@@ -103,5 +102,7 @@ public class Game : MonoBehaviour
         }
         //timeText.text = "" + playerData.time;
         timeText.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(playerData.time / 60), Mathf.FloorToInt(playerData.time % 60));
+        string json = JsonUtility.ToJson(playerData);
+        PlayerPrefs.SetString("jsonGameData"+currentProfile, json);
     }
 }

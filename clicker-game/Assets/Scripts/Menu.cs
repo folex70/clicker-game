@@ -19,7 +19,6 @@ public class Menu : MonoBehaviour
     public Text selectedProfile;
 
     void Start(){
-        //PlayerPrefs.DeleteAll();
         Debug.Log("data 1: "+PlayerPrefs.GetString("jsonGameData1"));
         Debug.Log("data 2: "+PlayerPrefs.GetString("jsonGameData2"));
         Debug.Log("data 3: "+PlayerPrefs.GetString("jsonGameData3"));
@@ -39,7 +38,7 @@ public class Menu : MonoBehaviour
         }        
     }
 
-    public void OpenPanel01() {
+    public void OpenPanel01() {//select new profile or load profile panel
         panel01.SetActive(true);
         panel02.SetActive(false);
         panel03.SetActive(false);
@@ -48,7 +47,7 @@ public class Menu : MonoBehaviour
         panel06.SetActive(false);
     }
 
-        public void OpenPanel02(){
+        public void OpenPanel02(){//load profile panel
         panel01.SetActive(false);
         panel02.SetActive(true);
         panel03.SetActive(false);
@@ -58,9 +57,9 @@ public class Menu : MonoBehaviour
     }
 
     public void SaveProfilePanel02(){
-        panel01.SetActive(true);
+        panel01.SetActive(false);
         panel02.SetActive(false);
-        panel03.SetActive(false);
+        panel03.SetActive(true);
         panel04.SetActive(false);
         panel05.SetActive(false);
         panel06.SetActive(false);
@@ -81,7 +80,7 @@ public class Menu : MonoBehaviour
         }
     }
 
-    public void OpenPanel03(){
+    public void OpenPanel03(){//select profile panel
         panel01.SetActive(false);
         panel02.SetActive(false);
         panel03.SetActive(true);
@@ -90,7 +89,7 @@ public class Menu : MonoBehaviour
         panel06.SetActive(false);
     }
     public void OpenPanel04()
-    {
+    {//selected profile panel
         panel01.SetActive(false);
         panel02.SetActive(false);
         panel03.SetActive(false);
@@ -99,7 +98,7 @@ public class Menu : MonoBehaviour
         panel06.SetActive(false);
     }
     public void OpenPanel06()
-    {
+    {//"profiles are full" message
         panel01.SetActive(false);
         panel02.SetActive(false);
         panel03.SetActive(false);
@@ -149,7 +148,7 @@ public class Menu : MonoBehaviour
 
     }
 
-    public void DelProfilePanel() {
+    public void DelProfilePanel() {//"are sure?" delete message panel
         panel01.SetActive(false);
         panel02.SetActive(false);
         panel03.SetActive(false);
@@ -165,14 +164,17 @@ public class Menu : MonoBehaviour
         {
             case 1:
                 PlayerPrefs.DeleteKey("profile01");
+                PlayerPrefs.DeleteKey("jsonGameData1");
                 profile01.text = "Empty";
                 break;
             case 2:
                 PlayerPrefs.DeleteKey("profile02");
+                PlayerPrefs.DeleteKey("jsonGameData2");
                 profile02.text = "Empty";
                 break;
             case 3:
                 PlayerPrefs.DeleteKey("profile03");
+                PlayerPrefs.DeleteKey("jsonGameData3");
                 profile03.text = "Empty";
                 break;
         }

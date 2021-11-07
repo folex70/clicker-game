@@ -14,26 +14,36 @@ public class Game : MonoBehaviour
     public GameObject dwarfFloatingPoints;
     public GameObject stone;
     public int currentProfile;
+    public string currentProfileData;
     public static PlayerData playerData = new PlayerData();
 
     void Start()
     {
         currentProfile = PlayerPrefs.GetInt("currentProfile");
-        
-        playerData.power = 1;
-        playerData.money = 0;
-        playerData.miner = 1;
-        playerData.time = 120;
-        playerData.level = 1;
-        playerData.timeMiner = 1;
-        playerData.baseTimeMiner = 1;
+        currentProfileData = PlayerPrefs.GetString("jsonGameData" + currentProfile);
+        if (currentProfileData == "")
+        {
 
-        string json = JsonUtility.ToJson(playerData);
+            playerData.power = 1;
+            playerData.money = 0;
+            playerData.miner = 1;
+            playerData.time = 120;
+            playerData.level = 1;
+            playerData.timeMiner = 1;
+            playerData.baseTimeMiner = 1;
+        }
+        else {
 
-        PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(json);
-        Debug.Log("power: "+loadedPlayerData.power);
-        Debug.Log("power: "+loadedPlayerData.money);
-        
+            PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(currentProfileData);
+            playerData.power = loadedPlayerData.power;
+            playerData.money = loadedPlayerData.money;
+            playerData.miner = loadedPlayerData.miner;
+            playerData.time  = loadedPlayerData.time;
+            playerData.level = loadedPlayerData.level;
+            playerData.timeMiner = loadedPlayerData.timeMiner;
+            playerData.baseTimeMiner = loadedPlayerData.baseTimeMiner;
+        }
+               
     }
 
     public class PlayerData {
